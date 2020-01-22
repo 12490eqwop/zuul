@@ -1,0 +1,31 @@
+zuul:
+  route:
+    service1:
+      url:
+        -http://192.168.1.155:8101
+        -http://192.168.1.155:8103
+        -http://192.168.1.155:8104
+        -http://192.168.1.155:8105
+
+eureka:
+  name: sampleGate
+  registration:
+    enabled: false
+
+  port: 8088
+  vipAddress: "sampleGate.mydomain.net"
+  preferSameZone: true
+  shouldUseDns: false
+  serviceUrl:
+    default: http://localhost:8080/eureka/v2/
+
+---
+server:
+  port: 8088
+
+---
+demo2:
+  demo:
+    host:
+      -example1
+      -example2
